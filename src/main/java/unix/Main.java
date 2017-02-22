@@ -18,7 +18,6 @@ public class Main {
 
 
 	public static void main(String[] args) {
-
 		String rootDir = FILE_UNIX_PATH1;
 		//ファイルを読み込み
 		new Main().readFileAndCapitalize(rootDir);
@@ -30,10 +29,13 @@ public class Main {
 	 * */
 	private void readFileAndCapitalize(String rootDir) {
 
-		Path p = Paths.get(rootDir);
+		//PathをString型で指定するときは、絶対パスを解決するようにする。
+		Path pt = Paths.get(".", rootDir);
 		StringBuilder sb = new StringBuilder();
 		String result;
-		try (DirectoryStream<Path> ds = Files.newDirectoryStream(p)){
+		//指定したディレクトリの直下にあるファイルを操作
+		try (DirectoryStream<Path> ds = Files.newDirectoryStream(pt)){
+
 			Iterator<Path> ite = ds.iterator();
 			while (ite.hasNext()) {
 				Path path = (Path) ite.next();
