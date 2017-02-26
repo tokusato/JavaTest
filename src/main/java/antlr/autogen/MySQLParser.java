@@ -1,13 +1,21 @@
 // Generated from MySQLParser.g4 by ANTLR 4.4
 package antlr.autogen;
-import org.antlr.v4.runtime.atn.*;
-import org.antlr.v4.runtime.dfa.DFA;
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.*;
-import org.antlr.v4.runtime.tree.*;
 import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
+
+import org.antlr.v4.runtime.NoViableAltException;
+import org.antlr.v4.runtime.Parser;
+import org.antlr.v4.runtime.ParserRuleContext;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.RuntimeMetaData;
+import org.antlr.v4.runtime.TokenStream;
+import org.antlr.v4.runtime.atn.ATN;
+import org.antlr.v4.runtime.atn.ATNDeserializer;
+import org.antlr.v4.runtime.atn.ParserATNSimulator;
+import org.antlr.v4.runtime.atn.PredictionContextCache;
+import org.antlr.v4.runtime.dfa.DFA;
+import org.antlr.v4.runtime.tree.ParseTreeListener;
+import org.antlr.v4.runtime.tree.ParseTreeVisitor;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class MySQLParser extends Parser {
@@ -17,50 +25,50 @@ public class MySQLParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		ALL=12, JOIN=50, BETWEEN=18, FROM=2, MINUS=21, INDEX=53, PARTITION=61, 
-		ID=68, INNER=48, NOT_EQ=40, NULL=8, LEFT=64, IN=10, NEWLINE=70, LPAREN=32, 
-		DOT=46, FOR=58, TRUE=14, POWER_OP=25, IS=7, SHIFT_LEFT=27, RPAREN=31, 
-		WHERE=3, EQ=37, USING=52, RBRACK=33, NOT=41, LIKE=9, LBRACK=34, AND=4, 
-		GET=43, XOR=6, KEY=54, PLUS=20, LTH=38, USER_VAR=72, BINARY=26, SEMI=44, 
-		ANY=13, IGNORE=60, INT=69, DIVIDE=16, ORDER=55, GROUP=56, NATURAL=63, 
-		REGEXP=19, BY=57, STRAIGHT_JOIN=62, RIGHT=65, OUTER=49, OJ=66, WS=71, 
-		ON=67, COMMA=45, BITAND=24, OR=5, MOD=17, VERTBAR=23, EXISTS=11, COLLATE=47, 
-		USE=59, NEGATION=22, ASTERISK=30, COLON=35, SELECT=1, SHIFT_RIGHT=28, 
+		ALL=12, JOIN=50, BETWEEN=18, FROM=2, MINUS=21, INDEX=53, PARTITION=61,
+		ID=68, INNER=48, NOT_EQ=40, NULL=8, LEFT=64, IN=10, NEWLINE=70, LPAREN=32,
+		DOT=46, FOR=58, TRUE=14, POWER_OP=25, IS=7, SHIFT_LEFT=27, RPAREN=31,
+		WHERE=3, EQ=37, USING=52, RBRACK=33, NOT=41, LIKE=9, LBRACK=34, AND=4,
+		GET=43, XOR=6, KEY=54, PLUS=20, LTH=38, USER_VAR=72, BINARY=26, SEMI=44,
+		ANY=13, IGNORE=60, INT=69, DIVIDE=16, ORDER=55, GROUP=56, NATURAL=63,
+		REGEXP=19, BY=57, STRAIGHT_JOIN=62, RIGHT=65, OUTER=49, OJ=66, WS=71,
+		ON=67, COMMA=45, BITAND=24, OR=5, MOD=17, VERTBAR=23, EXISTS=11, COLLATE=47,
+		USE=59, NEGATION=22, ASTERISK=30, COLON=35, SELECT=1, SHIFT_RIGHT=28,
 		ESCAPE=29, ALL_FIELDS=36, CROSS=51, FALSE=15, GTH=39, LET=42;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'select'", "'from'", "'where'", "AND", "OR", "'xor'", "'is'", 
-		"'null'", "'like'", "'in'", "'exists'", "'all'", "'any'", "'true'", "'false'", 
-		"DIVIDE", "MOD", "'between'", "'regexp'", "'+'", "'-'", "'~'", "'|'", 
-		"'&'", "'^'", "'binary'", "'<<'", "'>>'", "'escape'", "'*'", "')'", "'('", 
-		"']'", "'['", "':'", "'.*'", "'='", "'<'", "'>'", "'!='", "'not'", "'<='", 
-		"'>='", "';'", "','", "'.'", "'collate'", "'inner'", "'outer'", "'join'", 
-		"'cross'", "'using'", "'index'", "'key'", "'order'", "'group'", "'by'", 
-		"'for'", "'use'", "'ignore'", "'partition'", "'straight_join'", "'natural'", 
+		"<INVALID>", "'select'", "'from'", "'where'", "AND", "OR", "'xor'", "'is'",
+		"'null'", "'like'", "'in'", "'exists'", "'all'", "'any'", "'true'", "'false'",
+		"DIVIDE", "MOD", "'between'", "'regexp'", "'+'", "'-'", "'~'", "'|'",
+		"'&'", "'^'", "'binary'", "'<<'", "'>>'", "'escape'", "'*'", "')'", "'('",
+		"']'", "'['", "':'", "'.*'", "'='", "'<'", "'>'", "'!='", "'not'", "'<='",
+		"'>='", "';'", "','", "'.'", "'collate'", "'inner'", "'outer'", "'join'",
+		"'cross'", "'using'", "'index'", "'key'", "'order'", "'group'", "'by'",
+		"'for'", "'use'", "'ignore'", "'partition'", "'straight_join'", "'natural'",
 		"'left'", "'right'", "'oj'", "'on'", "ID", "INT", "NEWLINE", "WS", "USER_VAR"
 	};
 	public static final int
-		RULE_stat = 0, RULE_schema_name = 1, RULE_select_clause = 2, RULE_table_name = 3, 
-		RULE_table_alias = 4, RULE_column_name = 5, RULE_column_name_alias = 6, 
-		RULE_index_name = 7, RULE_column_list = 8, RULE_column_list_clause = 9, 
-		RULE_from_clause = 10, RULE_select_key = 11, RULE_where_clause = 12, RULE_expression = 13, 
-		RULE_element = 14, RULE_right_element = 15, RULE_left_element = 16, RULE_target_element = 17, 
-		RULE_relational_op = 18, RULE_expr_op = 19, RULE_between_op = 20, RULE_is_or_is_not = 21, 
-		RULE_simple_expression = 22, RULE_table_references = 23, RULE_table_reference = 24, 
-		RULE_table_factor1 = 25, RULE_table_factor2 = 26, RULE_table_factor3 = 27, 
-		RULE_table_factor4 = 28, RULE_table_atom = 29, RULE_join_clause = 30, 
-		RULE_join_condition = 31, RULE_index_hint_list = 32, RULE_index_options = 33, 
-		RULE_index_hint = 34, RULE_index_list = 35, RULE_partition_clause = 36, 
-		RULE_partition_names = 37, RULE_partition_name = 38, RULE_subquery_alias = 39, 
+		RULE_stat = 0, RULE_schema_name = 1, RULE_select_clause = 2, RULE_table_name = 3,
+		RULE_table_alias = 4, RULE_column_name = 5, RULE_column_name_alias = 6,
+		RULE_index_name = 7, RULE_column_list = 8, RULE_column_list_clause = 9,
+		RULE_from_clause = 10, RULE_select_key = 11, RULE_where_clause = 12, RULE_expression = 13,
+		RULE_element = 14, RULE_right_element = 15, RULE_left_element = 16, RULE_target_element = 17,
+		RULE_relational_op = 18, RULE_expr_op = 19, RULE_between_op = 20, RULE_is_or_is_not = 21,
+		RULE_simple_expression = 22, RULE_table_references = 23, RULE_table_reference = 24,
+		RULE_table_factor1 = 25, RULE_table_factor2 = 26, RULE_table_factor3 = 27,
+		RULE_table_factor4 = 28, RULE_table_atom = 29, RULE_join_clause = 30,
+		RULE_join_condition = 31, RULE_index_hint_list = 32, RULE_index_options = 33,
+		RULE_index_hint = 34, RULE_index_list = 35, RULE_partition_clause = 36,
+		RULE_partition_names = 37, RULE_partition_name = 38, RULE_subquery_alias = 39,
 		RULE_subquery = 40;
 	public static final String[] ruleNames = {
-		"stat", "schema_name", "select_clause", "table_name", "table_alias", "column_name", 
-		"column_name_alias", "index_name", "column_list", "column_list_clause", 
-		"from_clause", "select_key", "where_clause", "expression", "element", 
-		"right_element", "left_element", "target_element", "relational_op", "expr_op", 
-		"between_op", "is_or_is_not", "simple_expression", "table_references", 
-		"table_reference", "table_factor1", "table_factor2", "table_factor3", 
-		"table_factor4", "table_atom", "join_clause", "join_condition", "index_hint_list", 
-		"index_options", "index_hint", "index_list", "partition_clause", "partition_names", 
+		"stat", "schema_name", "select_clause", "table_name", "table_alias", "column_name",
+		"column_name_alias", "index_name", "column_list", "column_list_clause",
+		"from_clause", "select_key", "where_clause", "expression", "element",
+		"right_element", "left_element", "target_element", "relational_op", "expr_op",
+		"between_op", "is_or_is_not", "simple_expression", "table_references",
+		"table_reference", "table_factor1", "table_factor2", "table_factor3",
+		"table_factor4", "table_atom", "join_clause", "join_condition", "index_hint_list",
+		"index_options", "index_hint", "index_list", "partition_clause", "partition_names",
 		"partition_name", "subquery_alias", "subquery"
 	};
 
@@ -102,6 +110,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitStat(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitStat(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StatContext stat() throws RecognitionException {
@@ -111,7 +124,7 @@ public class MySQLParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83); 
+			setState(83);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
@@ -120,7 +133,7 @@ public class MySQLParser extends Parser {
 				setState(82); select_clause();
 				}
 				}
-				setState(85); 
+				setState(85);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( _la==SELECT );
@@ -150,6 +163,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSchema_name(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSchema_name(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -196,6 +214,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSelect_clause(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSelect_clause(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -252,6 +275,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_name(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_name(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Table_nameContext table_name() throws RecognitionException {
@@ -287,6 +315,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_alias(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_alias(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -340,6 +373,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitColumn_name(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitColumn_name(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -438,6 +476,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitColumn_name_alias(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitColumn_name_alias(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Column_name_aliasContext column_name_alias() throws RecognitionException {
@@ -473,6 +516,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIndex_name(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIndex_name(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -520,6 +568,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitColumn_list(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitColumn_list(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -583,6 +636,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitColumn_list_clause(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitColumn_list_clause(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Column_list_clauseContext column_list_clause() throws RecognitionException {
@@ -644,6 +702,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitFrom_clause(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitFrom_clause(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final From_clauseContext from_clause() throws RecognitionException {
@@ -696,6 +759,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSelect_key(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSelect_key(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Select_keyContext select_key() throws RecognitionException {
@@ -734,6 +802,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitWhere_clause(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitWhere_clause(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -783,6 +856,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitExpression(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitExpression(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExpressionContext expression() throws RecognitionException {
@@ -803,7 +881,7 @@ public class MySQLParser extends Parser {
 					setState(165); expr_op();
 					setState(166); simple_expression();
 					}
-					} 
+					}
 				}
 				setState(172);
 				_errHandler.sync(this);
@@ -840,6 +918,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitElement(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitElement(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -912,6 +995,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitRight_element(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitRight_element(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Right_elementContext right_element() throws RecognitionException {
@@ -950,6 +1038,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitLeft_element(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitLeft_element(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Left_elementContext left_element() throws RecognitionException {
@@ -987,6 +1080,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTarget_element(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTarget_element(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1028,6 +1126,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitRelational_op(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitRelational_op(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1074,6 +1177,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitExpr_op(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitExpr_op(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Expr_opContext expr_op() throws RecognitionException {
@@ -1116,6 +1224,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitBetween_op(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitBetween_op(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Between_opContext between_op() throws RecognitionException {
@@ -1152,6 +1265,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIs_or_is_not(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIs_or_is_not(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1219,6 +1337,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSimple_expression(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSimple_expression(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1296,6 +1419,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_references(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_references(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Table_referencesContext table_references() throws RecognitionException {
@@ -1372,6 +1500,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_reference(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_reference(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Table_referenceContext table_reference() throws RecognitionException {
@@ -1429,6 +1562,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_factor1(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_factor1(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1507,6 +1645,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_factor2(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_factor2(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Table_factor2Context table_factor2() throws RecognitionException {
@@ -1572,6 +1715,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_factor3(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_factor3(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1643,6 +1791,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_factor4(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_factor4(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1747,6 +1900,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitTable_atom(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitTable_atom(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1869,6 +2027,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitJoin_clause(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitJoin_clause(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2030,6 +2193,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitJoin_condition(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitJoin_condition(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Join_conditionContext join_condition() throws RecognitionException {
@@ -2109,6 +2277,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIndex_hint_list(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIndex_hint_list(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Index_hint_listContext index_hint_list() throws RecognitionException {
@@ -2129,7 +2302,7 @@ public class MySQLParser extends Parser {
 					setState(347); match(COMMA);
 					setState(348); index_hint();
 					}
-					} 
+					}
 				}
 				setState(353);
 				_errHandler.sync(this);
@@ -2167,6 +2340,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIndex_options(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIndex_options(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2255,6 +2433,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIndex_hint(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIndex_hint(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Index_hintContext index_hint() throws RecognitionException {
@@ -2329,6 +2512,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitIndex_list(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitIndex_list(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Index_listContext index_list() throws RecognitionException {
@@ -2385,6 +2573,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitPartition_clause(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitPartition_clause(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Partition_clauseContext partition_clause() throws RecognitionException {
@@ -2432,6 +2625,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitPartition_names(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitPartition_names(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2484,6 +2682,11 @@ public class MySQLParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitPartition_name(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitPartition_name(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final Partition_nameContext partition_name() throws RecognitionException {
@@ -2519,6 +2722,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSubquery_alias(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSubquery_alias(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -2559,6 +2767,11 @@ public class MySQLParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof MySQLParserListener ) ((MySQLParserListener)listener).exitSubquery(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof MySQLParserVisitor ) return ((MySQLParserVisitor<? extends T>)visitor).visitSubquery(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 

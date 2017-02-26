@@ -17,6 +17,7 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import antlr.autogen.MySQLLexer;
 import antlr.autogen.MySQLParser;
+import antlr.autogen.MySQLParserBaseVisitor;
 
 public class SqlSyntax {
 
@@ -66,6 +67,13 @@ public class SqlSyntax {
 		    ParseTreeWalker walker = new ParseTreeWalker();
 
 		    System.out.println(walker.toString());
+
+		    //Visitorクラスを利用して構文解析のマッチ箇所でアクションを行う。
+		    MySQLParserBaseVisitor<String> visitor = new MySQLParserBaseVisitor<>();
+		    String str = visitor.visit(tree);
+		    String str2 = visitor.visitSchema_name(msp.schema_name());
+		    System.out.println(str);
+
 
 		} catch (IOException ioe){
 			ioe.printStackTrace();
