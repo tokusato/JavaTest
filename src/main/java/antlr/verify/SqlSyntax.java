@@ -58,7 +58,6 @@ public class SqlSyntax {
 			MySQLParser msp = new MySQLParser(cts);
 
 			//begin parsing at rule
-//			msp.stat();
 
 			//TODO I want to get both table name natural joined!! but how to ??
 			msp.setBuildParseTree(true);
