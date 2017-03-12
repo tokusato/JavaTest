@@ -10,5 +10,4 @@ public class CommonUtil {
 	public static final String FILE_UNIX_TESTPATH1 = "/src/test/resources/unix";
 	public static final String FILE_SQL_PATH1 = ".\\src\\main\\java\\antlr\\resource\\sql.txt";
 
-
 }
