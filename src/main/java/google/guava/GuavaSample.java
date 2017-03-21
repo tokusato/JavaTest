@@ -8,6 +8,8 @@ import java.util.logging.Logger;
 import com.google.common.base.CaseFormat;
 import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 
 public class GuavaSample {
 
@@ -26,6 +28,9 @@ public class GuavaSample {
 		//Join the Collection String in one line
 		//this may be easily realized by lambda equotation
 		exec3();
+
+		//Create the list element of which is immutable.
+		exec4();
 	}
 
 	private static void exec1() {
@@ -66,6 +71,16 @@ public class GuavaSample {
 		String joined1 = Joiner.on(" , ").join(strList);
 
 	}
+
+	private static void exec4() {
+
+		//Immutable Collection にはそれぞれのBuilderが存在する。
+		Builder<String> builder = ImmutableList.builder();
+
+		builder.add("Christ");
+		ImmutableList<String> imList = builder.build();
+	}
+
 
 
 }
