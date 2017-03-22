@@ -28,7 +28,6 @@ public class OracleConnect {
 //		String user = "sys as sysdba";
 		String user = "appuser";
 		// パスワード
-//		String pass = "tokusato0630";
 		String pass = "apppass1234";
 		// サーバ名
 		String servername = "localhost";
