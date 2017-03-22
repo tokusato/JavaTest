@@ -21,8 +21,6 @@ public class SparkSample {
 		// run and try to access -> http://localhost:4567/helloWorld
 		get("/helloWorld", (req, res) -> "Wonderfull WebServer is included");
 
-		// who stop this server? and how?
-		stop();
 	}
 
 }
