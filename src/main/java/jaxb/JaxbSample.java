@@ -6,6 +6,10 @@ import java.io.FileOutputStream;
 
 import javax.xml.bind.DataBindingException;
 import javax.xml.bind.JAXB;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import util.CommonUtil;
 
@@ -32,7 +36,8 @@ public class JaxbSample {
 	private void marshal() {
 
 		// generate Java Object
-		TestBean tb1 = new TestBean(1, "Tom");
+//		TestBean tb1 = new TestBean(1, "Tom");
+		TestBean tb1 = new TestBean(1, null);
 
 		// Marshalするものは、beanでないといけない。
 		// 標準出力へXML書き出し( for 動作確認 )
@@ -61,8 +66,23 @@ public class JaxbSample {
 	}
 }
 
+/**
+ * memo
+ * <p>XmlAccessType.FIELD -> フィールドのみXMLにバインドされる。
+ * <p>XmlRootElement -> クラスをXMLタグへマッピングする。
+ * <p>
+ * */
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name="testBean",namespace="original.namespace")
 class TestBean {
+
+
+	//memo -> nillable means it allow user to set null to bean
+
+	@XmlElement(name="id", nillable=true, required=true)
 	private int id;
+	@XmlElement(name="name", nillable=true, required=true)
 	private String name;
 
 	public TestBean(int id, String name) {
