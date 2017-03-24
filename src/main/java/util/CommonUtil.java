@@ -16,4 +16,15 @@ public class CommonUtil {
 	 *  */
 	public static final String ROOT_PATH = ".\\src\\main\\java\\";
 
+	/** Oracle jdbc class path */
+	public static final String ORACLE_DRIVER_CLASS = "oracle.jdbc.driver.OracleDriver";
+	/** Oracle driver */
+	public static final String THIN_DRIVER = "jdbc:oracle:thin:";
+
+
+	/** charactor */
+	public static final String COLON = ":";
+	public static final String SLASH= "/";
+	public static final String ATMARK = "@";
+
 }

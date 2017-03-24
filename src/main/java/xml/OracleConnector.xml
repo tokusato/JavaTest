@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oracleConnector>
+    <password>apppass1234</password>
+    <portNumber>1522</portNumber>
+    <serverName>localhost</serverName>
+    <sid>pdborcl</sid>
+    <user>appuser</user>
+</oracleConnector>

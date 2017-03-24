@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class OracleConnect {
+public class OracleConnectSample {
 
 	/**
 	 * TESTING ORACLE CONNECTION <br>
@@ -16,7 +16,7 @@ public class OracleConnect {
 	public static void main(String[] args) {
 
 		try {
-			new OracleConnect().connectAndSelect();
+			new OracleConnectSample().connectAndSelect();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,7 +51,7 @@ public class OracleConnect {
 			//ポート番号の後はスラッシュ!! -> CDBで接続できたコロンでは、PDBで接続できないので注意!!
 			//*************************************************************************************************
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@" + servername + ":1522/" + sid, user, pass);
-
+//			conn = DriverManager.getConnection("jdbc:oracle:thin:appuser/apppass1234@" + servername + ":1522/" + sid);
 			// Statementの作成
 			stmt = conn.createStatement();
 
