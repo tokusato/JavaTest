@@ -42,6 +42,7 @@ public class Processer {
 			properties.setProperty(SEQUENCE,"EE,ER,EK,AP");
 			properties.setProperty(HEADER_LINES,"5");
 			properties.setProperty(INPUT_FILE_FOLDER_PATH,".\\src\\main\\java\\tasktm\\in");
+			properties.setProperty(TRANSACTION_TYPE,"MN,TT");
 //			int i = 0;
 //			while ((i = is.read()) != -1){
 //				System.out.println(i);

@@ -12,7 +12,7 @@ public class TasktmHub extends TasktmBase {
 //	private TasktmHub() {
 //	}
 
-	public TasktmHub(Map<String,String> tasktmMap) {
+	public TasktmHub(Map<String,String[]> tasktmMap) {
 		super(tasktmMap);
 	}
 

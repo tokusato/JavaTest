@@ -14,7 +14,8 @@ public class TasktmBase {
 
 
 	//TODO implement this constructor
-	public TasktmBase(Map<String, String> tasktmMap) {
+	public TasktmBase(Map<String, String[]> tasktmMap) {
+		//set each array elements to this class field
 	}
 	/**
 	 * @return fDate
