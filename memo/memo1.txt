@@ -1,0 +1,10 @@
+Sleep処理で例外(Interrupted Exception)のキャッチを防ぎたいなら、
+以下のメソッドを別途用意すればオッケー。
+
+    private static void doSleep(Long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
