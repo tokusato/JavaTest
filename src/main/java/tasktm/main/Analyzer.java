@@ -18,15 +18,16 @@ public class Analyzer extends Processer {
 
 	}
 
-	private void filter(Map<String, List<TasktmBase>> beanMap) {
+
+	/**
+	 * filter List<TasktmBase>(in beanMap) by transaction typep user defined
+	 *
+	 * */
+	public void filter(Map<String, List<TasktmBase>> beanMap) {
 
 		List<String> filterList =
 				Arrays.asList( properties.getProperty(TRANSACTION_TYPE).split(COMMA) );
 		//keeping the order of configuration
-
-
-
-		//TODO ループについては、シーケンスをまとめて見直す。
 
 		for (String filterType : filterList){
 
@@ -50,9 +51,19 @@ public class Analyzer extends Processer {
 						tmpList.add(list.get(i));
 					};
 				}
+				// filter List
+				list = tmpList;
+				tmpList = null;
 			}
 		}
+	}
 
+	//TODO remove this when it will be unneeded
+	public Integer add(int a1, int a2) {
+
+		return a1+a2;
 
 	}
+
+
 }

@@ -70,6 +70,14 @@ public class PathMain {
 			System.out.println("###### loop ######");
 
 
+			//**********************************
+			System.out.println("#############");
+			System.out.println(Files.getAttribute(Paths.get("C:\\Users\\n\\Desktop\\rootログイン192.168.1.2.ttl"), "creationTime"));
+			System.out.println(Files.getLastModifiedTime(Paths.get("C:\\Users\\n\\Desktop\\rootログイン192.168.1.2.ttl")));
+			System.out.println("#############");
+			//***********************************
+
+
 			/* FileSystemの検証 */
 			FileSystem fs = p.getFileSystem();
 
